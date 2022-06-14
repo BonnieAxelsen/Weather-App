@@ -18,16 +18,14 @@ h5 {
 
 h1 {
   font-size: 100px;
-  text-align: right;
-  line-height: 0em;
-  margin: 0px 10px 5px 50px;
+  text-align: center;
+  line-height: 0.8em;
 }
 
 h2 {
-  text-align: right;
-  margin: 20px 20px 0px;
   line-height: 0.8em;
   text-transform: lowercase;
+  text-align: center;
 }
 
 h3 {
@@ -94,8 +92,17 @@ footer {
   transform: scale(135%);
 }
 
-.degrees {
-  cursor: pointer;
+a {
+  text-decoration: none;
+}
+
+.degrees .active {
+  color: #e8aa8c;
+  cursor: default;
+}
+
+.degrees .active:hover {
+  text-decoration: none;
 }
 
 .main-visual {
@@ -104,10 +111,9 @@ footer {
 }
 
 .main-image {
-  width: 400px;
-  position: relative;
-  left: -20px;
-  top: -20px;
+  display: block;
+  margin: 0 auto;
+  width: 350px;
 }
 
 .col-4 {
@@ -142,4 +148,12 @@ footer {
   display: block;
   margin: 0px 25px 25px;
   width: 60px;
+}
+
+a {
+  color: #e2dcd5;
+}
+
+a:hover {
+  color: #e8aa8c;
 }

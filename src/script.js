@@ -1,56 +1,3 @@
-// intro alert
-/*function promptUserForCity() {
-  let city = prompt("Enter a city");
-  city = city.toLowerCase();
-  city = city.trim();
-  return city;
-}
-
-let weather = {
-  paris: {
-    temp: 19.7,
-    humidity: 80,
-  },
-  tokyo: {
-    temp: 17.3,
-    humidity: 50,
-  },
-  lisbon: {
-    temp: 30.2,
-    humidity: 20,
-  },
-  "san francisco": {
-    temp: 20.9,
-    humidity: 100,
-  },
-  moscow: {
-    temp: -5,
-    humidity: 20,
-  },
-};
-*/
-function cToF(celciusTemp) {
-  return (celciusTemp * 9) / 5 + 32;
-}
-
-function fToC(fahrenheitTemp) {
-  return (5 / 9) * (fahrenheitTemp - 32);
-}
-/*
-let userInput = promptUserForCity();
-if (userInput in weather) {
-  alert(
-    `It is currently ${Math.round(weather[userInput].temp)}°C (${Math.round(
-      cToF(weather[userInput].temp)
-    )}°F) in ${userInput} with a humidity of ${weather[userInput].humidity}%`
-  );
-} else {
-  alert(
-    `Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${userInput}`
-  );
-}
-*/
-
 //Search form
 
 function displayWeatherInput(response) {
@@ -62,6 +9,10 @@ function displayWeatherInput(response) {
   )}°`;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
+  document
+    .querySelector("#weather-image")
+    .setAttribute("src", `images/${response.data.weather[0].icon}.svg`);
+  celciusTemperature = response.data.main.temp;
 }
 
 function searchCity(city) {
@@ -81,8 +32,6 @@ function handleSubmit(event) {
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
-
-searchCity("Aarhus");
 
 // Geolocation button (weather-description, city, country code, temp)
 
@@ -107,7 +56,6 @@ function showTemperature(response) {
 }
 
 function showTempCity(response) {
-  console.log(response);
   let city = response.data.name;
   let headingCity = document.querySelector("#city");
   headingCity.innerHTML = city;
@@ -134,6 +82,7 @@ function retrievePosition(position) {
 }
 
 // Date
+
 function getDate() {
   let date = new Date();
   let year = date.getFullYear();
@@ -173,27 +122,30 @@ displayCurrentDate();
 displayCurrentDay();
 
 // Unit of temp
-function celciusClicked() {
-  let celcius = document.querySelector("#celcius");
-  celcius.innerHTML = "<strong>°C </strong>";
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.innerHTML = "°F";
-  let temperature = document.querySelector("#temp");
-  temperature.innerHTML = "18°";
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°`;
 }
-let celcius = document.querySelector("#celcius");
-celcius.addEventListener("click", celciusClicked);
 
-function fahrenheitClicked() {
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.innerHTML = "<strong>°F</strong>";
-  let celcius = document.querySelector("#celcius");
-  celcius.innerHTML = "°C ";
-  let temperature = document.querySelector("#temp");
-  temperature.innerHTML = `${Math.round(cToF(18))}°`;
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp");
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = `${Math.round(celciusTemperature)}°`;
 }
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", fahrenheitClicked);
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius");
+celciusLink.addEventListener("click", displayCelciusTemperature);
+
+let celciusTemperature = null;
 
 // Forecast days
 let daysShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -211,3 +163,5 @@ function displayForecastDays() {
   dayThree.innerHTML = daysShort[(day + 3) % 7];
 }
 displayForecastDays();
+
+searchCity("Aarhus");
