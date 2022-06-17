@@ -1,6 +1,21 @@
 //Search form
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 function displayWeatherInput(response) {
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#country-code").innerHTML = response.data.sys.country;
@@ -13,6 +28,9 @@ function displayWeatherInput(response) {
     .querySelector("#weather-image")
     .setAttribute("src", `images/${response.data.weather[0].icon}.svg`);
   celciusTemperature = response.data.main.temp;
+  document.querySelector("#time").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 
 function searchCity(city) {
@@ -43,30 +61,6 @@ function getCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-function showTempDescription(response) {
-  let description = response.data.weather[0].description;
-  let headingDescription = document.querySelector("#weather-description");
-  headingDescription.innerHTML = description;
-}
-
-function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let headingTemp = document.querySelector("#temp");
-  headingTemp.innerHTML = `${temperature}°`;
-}
-
-function showTempCity(response) {
-  let city = response.data.name;
-  let headingCity = document.querySelector("#city");
-  headingCity.innerHTML = city;
-}
-
-function showTempCountry(response) {
-  let country = response.data.sys.country;
-  let headingCountry = document.querySelector("#country-code");
-  headingCountry.innerHTML = country;
-}
-
 function retrievePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -74,11 +68,7 @@ function retrievePosition(position) {
   let apiKey = "d1214a1e2aee0aef5a6803c2d3bbfa53";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiUrl = `${apiEndpoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  //console.log(apiUrl);
-  axios.get(apiUrl).then(showTempDescription);
-  axios.get(apiUrl).then(showTemperature);
-  axios.get(apiUrl).then(showTempCity);
-  axios.get(apiUrl).then(showTempCountry);
+  axios.get(apiUrl).then(displayWeatherInput);
 }
 
 // Date
@@ -154,13 +144,13 @@ function displayForecastDays() {
   let date = new Date();
   let day = date.getDay();
   let dayZero = document.querySelector("#dayZero");
-  dayZero.innerHTML = daysShort[day];
+  dayZero.innerHTML = daysShort[day + 1];
   let dayOne = document.querySelector("#dayOne");
-  dayOne.innerHTML = daysShort[(day + 1) % 7];
+  dayOne.innerHTML = daysShort[(day + 2) % 7];
   let dayTwo = document.querySelector("#dayTwo");
-  dayTwo.innerHTML = daysShort[(day + 2) % 7];
+  dayTwo.innerHTML = daysShort[(day + 3) % 7];
   let dayThree = document.querySelector("#dayThree");
-  dayThree.innerHTML = daysShort[(day + 3) % 7];
+  dayThree.innerHTML = daysShort[(day + 4) % 7];
 }
 displayForecastDays();
 

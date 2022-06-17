@@ -1,6 +1,5 @@
 body {
-  background-color: #f7f7f7;
-  padding-top: 50px;
+  background-color: #ffffff;
   font-family: "Comfortaa", cursive;
 }
 
@@ -10,10 +9,6 @@ strong {
 }
 
 h2,
-p {
-  color: #61564a;
-}
-
 h3,
 h4,
 h5 {
@@ -21,13 +16,14 @@ h5 {
 }
 
 h1 {
-  font-size: 150px;
+  font-size: 130px;
   font-weight: bolder;
   text-align: center;
   line-height: 0.8em;
 }
 
 h2 {
+  font-size: 45px;
   line-height: 0.8em;
   text-transform: lowercase;
   text-align: center;
@@ -36,7 +32,11 @@ h2 {
 h3 {
   text-align: left;
   margin: 0px;
-  font-size: 28px;
+  font-size: 38px;
+}
+
+h4 {
+  font-size: 25px;
 }
 
 h5 {
@@ -45,15 +45,20 @@ h5 {
 }
 
 p {
+  color: #61564a;
   text-align: right;
   font-size: 10px;
   margin: 0px;
   text-transform: lowercase;
 }
 
+header {
+  padding: 25px;
+}
+
 footer {
   background-color: #d3d2bf;
-  padding: 30px 40px;
+  padding: 40px;
 }
 
 .container {
@@ -62,6 +67,7 @@ footer {
 
 .forecast {
   background-color: #d3d2bf;
+  padding: 40px 40px 20px;
 }
 
 .search {
@@ -70,7 +76,7 @@ footer {
 }
 
 .form-control {
-  margin: 20px 20px;
+  margin: 20px 0px 20px 20px;
   padding: 10px;
   font-family: "Comfortaa", cursive;
   font-size: 12px;
@@ -99,8 +105,14 @@ a {
   text-decoration: none;
 }
 
+.units {
+  font-size: 25px;
+  color: #61564a;
+}
+
 .degrees .active {
   color: #ea8663;
+  font-weight: bold;
   cursor: default;
 }
 
@@ -108,35 +120,47 @@ a {
   text-decoration: none;
 }
 
+.time {
+  margin: 0px;
+  color: #ea8663;
+  text-align: right;
+}
+
 .main-visual {
   background-color: #d3d2bf;
-  padding: 15px 40px 40px;
+  padding: 15px 40px 80px;
 }
 
 .main-image {
   display: block;
   margin: 0 auto;
   padding: 0px 0px 50px;
-  width: 200px;
+  width: 300px;
 }
 
-.col-4 {
-  text-align: right;
-  line-height: 1.5em;
-}
-
-.col-8 {
+.city {
   text-align: left;
   line-height: 1.5em;
 }
 
+.date {
+  text-align: right;
+  line-height: 1.5em;
+  margin: 12px 0px 0px;
+}
+
 .country-code {
+  font-weight: bold;
   color: #ea8663;
+}
+
+.day {
+  text-align: right;
 }
 
 .info {
   background-color: #b9b8a4;
-  padding: 0px 40px;
+  padding: 15px 40px;
 }
 
 .location-date {
@@ -144,19 +168,20 @@ a {
 }
 
 .forecast {
-  padding: 30px 40px 0px;
+  padding: 40px 40px 0px;
 }
 
 .forecast-images {
   display: block;
-  margin: 0px 25px 25px;
+  margin: 15px 25px 25px;
   width: 40px;
 }
 
 a {
   color: #ffffff;
+  display: inline;
 }
 
 a:hover {
-  color: #e8aa8c;
+  color: #ea8663;
 }
