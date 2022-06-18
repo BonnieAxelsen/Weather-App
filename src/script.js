@@ -144,7 +144,7 @@ function displayForecastDays() {
   let date = new Date();
   let day = date.getDay();
   let dayZero = document.querySelector("#dayZero");
-  dayZero.innerHTML = daysShort[day + 1];
+  dayZero.innerHTML = daysShort[(day + 1) % 7];
   let dayOne = document.querySelector("#dayOne");
   dayOne.innerHTML = daysShort[(day + 2) % 7];
   let dayTwo = document.querySelector("#dayTwo");

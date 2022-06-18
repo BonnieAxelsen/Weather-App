@@ -47,18 +47,18 @@ h5 {
 p {
   color: #61564a;
   text-align: right;
-  font-size: 10px;
+  font-size: 12px;
   margin: 0px;
   text-transform: lowercase;
 }
 
 header {
-  padding: 25px;
+  padding: 15px 20px;
 }
 
 footer {
   background-color: #d3d2bf;
-  padding: 40px;
+  padding: 25px 40px;
 }
 
 .container {
@@ -71,7 +71,7 @@ footer {
 }
 
 .search {
-  padding: 15px 15px 20px;
+  padding: 8px 15px 0px;
   background-color: #d3d2bf;
 }
 
@@ -128,14 +128,14 @@ a {
 
 .main-visual {
   background-color: #d3d2bf;
-  padding: 15px 40px 80px;
+  padding: 5px 40px 65px;
 }
 
 .main-image {
   display: block;
   margin: 0 auto;
-  padding: 0px 0px 50px;
-  width: 300px;
+  padding: 0px 0px 40px;
+  width: 275px;
 }
 
 .city {
@@ -160,7 +160,7 @@ a {
 
 .info {
   background-color: #b9b8a4;
-  padding: 15px 40px;
+  padding: 0px 40px;
 }
 
 .location-date {
@@ -168,7 +168,7 @@ a {
 }
 
 .forecast {
-  padding: 40px 40px 0px;
+  padding: 30px 40px 0px;
 }
 
 .forecast-images {
