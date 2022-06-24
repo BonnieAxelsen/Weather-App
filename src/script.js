@@ -137,7 +137,7 @@ celciusLink.addEventListener("click", displayCelciusTemperature);
 
 let celciusTemperature = null;
 
-// Forecast days
+/* Forecast days
 let daysShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 function displayForecastDays() {
@@ -152,6 +152,27 @@ function displayForecastDays() {
   let dayThree = document.querySelector("#dayThree");
   dayThree.innerHTML = daysShort[(day + 4) % 7];
 }
-displayForecastDays();
+displayForecastDays(); */
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` <div class="col-3">
+            <p>${day}</p>
+            <img src="images/11d.svg" alt="" class="forecast-images">
+            <h5>8° / <strong> 18°</strong></h5>
+        </div>
+      `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
 searchCity("Aarhus");
