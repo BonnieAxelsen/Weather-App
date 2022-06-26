@@ -50,15 +50,16 @@ p {
   font-size: 12px;
   margin: 0px;
   text-transform: lowercase;
+  line-height: 0.5em;
 }
 
 header {
-  padding: 15px 20px;
+  padding: 20px;
 }
 
 footer {
   background-color: #d3d2bf;
-  padding: 25px 40px;
+  padding: 35px;
 }
 
 .container {
@@ -173,7 +174,7 @@ a {
 
 .forecast-images {
   display: block;
-  margin: 15px 25px 25px;
+  margin: 20px auto;
   width: 40px;
 }
 

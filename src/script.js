@@ -152,21 +152,36 @@ let celciusTemperature = null;
 
 // Forecast days
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun"];
 
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-3">
-            <p>${day}</p>
-            <img src="images/11d.svg" alt="" class="forecast-images">
-            <h5>8° / <strong> 18°</strong></h5>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-3">
+            <p>
+                ${formatDay(forecastDay.dt)}
+            </p>
+            <img src=
+                "images/${forecastDay.weather[0].icon}.svg"
+                alt="" class="forecast-images">
+            <h5>
+                ${Math.round(forecastDay.temp.min)}° / 
+                <strong> ${Math.round(forecastDay.temp.max)}°</strong>
+            </h5>
         </div>
       `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
