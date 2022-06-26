@@ -4,20 +4,33 @@ body {
 }
 
 h1,
-strong {
+strong,
+.btn:hover,
+.degrees .active,
+.country-code,
+a:hover {
   color: #ea8663;
+  font-weight: bold;
 }
 
 h2,
 h3,
 h4,
-h5 {
+h5,
+a,
+.degrees .active:hover {
   color: #ffffff;
+  text-decoration: none;
+}
+
+p,
+.btn,
+.units {
+  color: #61564a;
 }
 
 h1 {
   font-size: 130px;
-  font-weight: bolder;
   text-align: center;
   line-height: 0.8em;
 }
@@ -37,6 +50,7 @@ h3 {
 
 h4 {
   font-size: 25px;
+  text-align: right;
 }
 
 h5 {
@@ -45,7 +59,6 @@ h5 {
 }
 
 p {
-  color: #61564a;
   text-align: right;
   font-size: 12px;
   margin: 0px;
@@ -53,33 +66,33 @@ p {
   line-height: 0.5em;
 }
 
+h1,
+.country-code {
+  font-weight: bold;
+}
+
 header {
   padding: 20px;
+  background-color: #ffffff;
 }
 
 footer {
-  background-color: #d3d2bf;
   padding: 35px;
 }
 
 .container {
   width: 600px;
-}
-
-.forecast {
+  padding: 0px;
   background-color: #d3d2bf;
-  padding: 40px 40px 20px;
 }
 
 .search {
   padding: 8px 15px 0px;
-  background-color: #d3d2bf;
 }
 
 .form-control {
   margin: 20px 0px 20px 20px;
   padding: 10px;
-  font-family: "Comfortaa", cursive;
   font-size: 12px;
 }
 
@@ -91,44 +104,29 @@ footer {
 
 .btn {
   padding: 12px 15px;
-  color: #616161;
   border: none;
   font-size: 16px;
   cursor: pointer;
 }
 
 .btn:hover {
-  color: #ea8663;
   transform: scale(135%);
-}
-
-a {
-  text-decoration: none;
 }
 
 .units {
   font-size: 25px;
-  color: #61564a;
 }
 
 .degrees .active {
-  color: #ea8663;
-  font-weight: bold;
   cursor: default;
-}
-
-.degrees .active:hover {
-  text-decoration: none;
 }
 
 .time {
   margin: 0px;
-  color: #ea8663;
   text-align: right;
 }
 
 .main-visual {
-  background-color: #d3d2bf;
   padding: 5px 40px 65px;
 }
 
@@ -150,22 +148,9 @@ a {
   margin: 12px 0px 0px;
 }
 
-.country-code {
-  font-weight: bold;
-  color: #ea8663;
-}
-
-.day {
-  text-align: right;
-}
-
 .info {
   background-color: #b9b8a4;
-  padding: 0px 40px;
-}
-
-.location-date {
-  padding: 30px 0px;
+  padding: 40px;
 }
 
 .forecast {
@@ -176,13 +161,4 @@ a {
   display: block;
   margin: 20px auto;
   width: 40px;
-}
-
-a {
-  color: #ffffff;
-  display: inline;
-}
-
-a:hover {
-  color: #ea8663;
 }

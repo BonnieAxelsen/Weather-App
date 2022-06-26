@@ -69,6 +69,8 @@ searchForm.addEventListener("submit", handleSubmit);
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(retrievePosition);
+  let inputField = document.querySelector("#search-text-input");
+  inputField.value = "";
 }
 
 let currentLocationButton = document.querySelector("#location-button");
