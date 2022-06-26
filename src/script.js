@@ -13,6 +13,17 @@ function formatDate(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  let latitude = coordinates.lat;
+  let longitude = coordinates.lon;
+  let units = "metric";
+  let apiKey = "d1214a1e2aee0aef5a6803c2d3bbfa53";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/onecall";
+  let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherInput(response) {
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
@@ -31,6 +42,8 @@ function displayWeatherInput(response) {
   document.querySelector("#time").innerHTML = formatDate(
     response.data.dt * 1000
   );
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -137,26 +150,11 @@ celciusLink.addEventListener("click", displayCelciusTemperature);
 
 let celciusTemperature = null;
 
-/* Forecast days
-let daysShort = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+// Forecast days
 
-function displayForecastDays() {
-  let date = new Date();
-  let day = date.getDay();
-  let dayZero = document.querySelector("#dayZero");
-  dayZero.innerHTML = daysShort[(day + 1) % 7];
-  let dayOne = document.querySelector("#dayOne");
-  dayOne.innerHTML = daysShort[(day + 2) % 7];
-  let dayTwo = document.querySelector("#dayTwo");
-  dayTwo.innerHTML = daysShort[(day + 3) % 7];
-  let dayThree = document.querySelector("#dayThree");
-  dayThree.innerHTML = daysShort[(day + 4) % 7];
-}
-displayForecastDays(); */
-
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
-
   let days = ["Thu", "Fri", "Sat", "Sun"];
 
   let forecastHTML = `<div class="row">`;
@@ -174,5 +172,4 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
 searchCity("Aarhus");
